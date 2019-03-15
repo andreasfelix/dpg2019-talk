@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Developing beam optics for the future of BESSY II</title>
+
+	<link rel="stylesheet" href="reveal.js/css/reveal.css">
+	<link rel="stylesheet" href="custom-theme.css">
+	<link rel="stylesheet" href="custom.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section class="space-evenly">
+				<div class="grid-titlepage">
+					<div class="grid-11 stretch">
+						<img src="images/layout/hzb_logo.svg" width="280px">
+						<img src="images/layout/hu_logo.svg" width="280px">
+					</div>
+					<div style="text-align: center;">
+						<h1 style="margin: 0">Developing Beam Optics for the Future of BESSY II</h1>
+						<h3 style="text-align: center;">Increasing the available installation length for the VSR cavity</h3>
+					</div>
+					<p style="font-size: 24pt;">by Felix Andreas</p>
+				</div>
+			</section>
+
+			<section class="center">
+				<h1>Motivation</h1>
+			</section>
+
+			<section>
+				<h1>BESSY II - A third generation light source</h1>
+				<div class="grow" style="display: grid; grid-template-columns: 2fr 1fr; align-items: center;">
+					<img src="images/layout/bessy_luft.jpg" width="80%">
+					<div class="flex-col space-evenly">
+						<ul>
+							<li>Third generation synchrotron light source</li><br>
+							<li>located in Berlin Adlershof</li><br>
+							<li>operated by the HZB</li>
+						</ul>
+
+						<div data-markdown>
+							Parameter | Value
+							------------------ | -----------
+							nominal energy | 1.7 GeV
+							beam current | 300 mA
+							circumference | 240 m
+							number of straights| 16
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h1>BESSY II - A third generation light source</h1>
+				<div class="grow grid-11">
+					<img src="images/01-BESSY-II-floor-plan_zoom.svg">
+				</div>
+			</section>
+
+			<section>
+				<h1>The Variable pulse-length Storage Ring</h1>
+				<img class="grow" src="images/01-cavity-in-T2_graphic.svg">
+				<p>One idea: Remove inner Quadrupoles to gain installation length</p>
+				<img src="images/layout/BessyVSR_logo.svg" style="position: absolute; top: 1%; right: 1.4%;">
+			</section>
+
+			<section class="center">
+				<h1>Transverse linear beam dynamics in circular accelerators</h1>
+			</section>
+
+			<section class="space-between">
+				<h3>Transverse linear beam dynamics in circular accelerators</h3>
+				<p>
+					The equations of motion for a charged particle in a magnetic field in linear order:
+				</p>
+				<div class="math">
+					\begin{align}
+					u''(s) + K(s) u(s) = 0 &&&\quad \overset{\text{Floquet's theorem}}{\Rightarrow} \quad &&u(s) = \sqrt{\epsilon}
+					\sqrt{\beta(s)} \cos(\psi(s)+\psi_0)
+					\end{align}
+				</div>
+				<img src="images/03-envelope.svg" alt="">
+			</section>
+
+			<section>
+				Periodicity conditions of circular accelerators:
+				$$\beta(s) = \beta(s + C)$$
+			</section>
+
+
+			<section>
+				<h1>The BESSY II Design lattice</h1>
+				<div class="flex grow">
+					<img src="images/04-design-lattice-def.svg">
+					<div data-markdown>
+						Magnet | $k / \mathrm{m}^2$
+						--- | ---
+						Q1 | +2.45190
+						Q2 | -1.89757
+						Q3D |-2.02025
+						Q4D |+1.40816
+						Q3T |-2.46319
+						Q4T |+2.62081
+						Q5T |-2.60000
+					</div>
+				</div>
+			</section>
+
+
+
+			<section>
+				<h1><span class="hl1">Task:</span> turn of Q5T2 and keep current beta function</h1>
+				<div class="grow flex-col space-between">
+					<img src="images/01-cavity-in-T2_def.svg" alt="">
+					<p style="font-size: 5em;">🠋</p>
+					<img src="images/01-cavity-in-T2_def_after.svg" alt="">
+				</div>
+			</section>
+
+
+
+
+
+
+
+
+
+
+			<section class="center">
+				<h1><span class="hl1">Challenges</span> of lattice development</h1>
+			</section>
+
+			<section>
+				<h1>Limits of the lattice stability <span class="hl2">- FODO cell</span></h1>
+				<p> The root term in the demonitor leads to a <span class="hl1">limited</span> solution space.</p>
+				$$\beta_{periodic} = \frac{2 R_{12}}{\sqrt{2 - R_{11}^2 - 2 R_{12} R_{21} - R_{22}^2}}$$
+				<div class="grid-11">
+					<img src="images/05-necktie-plot.svg">
+					<img src="images/05-limits-of-FODOcell.svg">
+				</div>
+			</section>
+
+
+			<section>
+				<h1>Moreover the solution space is <span class="hl1">not continious</span> for more complex lattices!</h1>
+				<img class="stretch" src="images/04-stability-plot-bessy2_Q3_vs_Q4_Q5_off_betamaxvalue.svg">
+				<p>Quadrupole scan for two BESSY II quadrupoles</p>
+			</section>
+
+			<section>
+				<h2>Implied difficulties of the limited solution space</h2>
+
+				<div style="display: grid; grid-template-columns: 1fr 1fr; place-items: center;">
+					<img src="images/04-stability-plot-bessy2_Q3_vs_Q4_Q5_off_betamaxvalue.svg">
+					<ol>
+						<li>It is diffcult to find good <span class="hl1">initial paramters</span> for an optimization method:
+							<br>If the initial configuration is not stable, there is no possiblity to come up with a reasonable
+							fitness function and the optimizer is sort of <span class="hl1">"blind"</span>. </li>
+						<br>
+						<li>The discontinuity of the solution space complicates it to find <span class="hl1">global minima</span>.
+							It needs a sophisticated optimization algorithm to "jump" between the stable regions.</li>
+					</ol>
+				</div>
+			</section>
+
+			<section>
+				<h1> Quadrupole scans and the <span class="hl2">curse of dimensionatly</span> </h1>
+			</section>
+
+			<section>
+				<h3> Quadrupole scans and the <span style="font-style: italic; color:aqua;">curse of dimensionatly</span> </h3>
+				<img src="images/curse_of_dimensionality.png">
+				<p><i>The number of scan points grows exponentially with the degrees of freedom!</i></p>
+				<p>
+					Assuming we the calculation of the twiss parameter would take $t_1 = \mathrm{1 ms} $. <br> A quadrupole scan
+					in the neighborhood of $l = 1 \mathrm{m} ^{-2}$ with a steps size $\Delta k = 0.01 \mathrm{m}^{-2}$ for a
+					combination of $M = 6$ magnets would need:
+				</p>
+
+				<div class="math">
+					\begin{equation}
+					t_{\mathrm{C}} = t_1 \cdot \left(\frac{l}{\Delta k}\right)^M = \mathrm{1 ms} \cdot
+					\left(\frac{1}{0.01}\right)^6 \approx
+					\mathrm{32 a} .
+					\end{equation}
+				</div>
+			</section>
+
+			<section>
+				<h2>Ratio of <span class="hl1">solution space</span> to <span class="hl2">scanned space</span></h2>
+				The ratio of the <span class="hl1">solution space</span> to the <span class="hl2">scanned space</span> strongly
+				depends on the interval of the scan.
+				<img src="images/highdimensions_color.svg" style="height: 20vh;">
+				<p>Tested for FODO cell</p>
+				<div data-markdown>
+					k-Interval | 2 DOF | 4 DOF
+					----- | ---- |
+					0.15 | 0.26 | 0.38
+					0.25 | 0.30 | 0.20
+					0.50 | 0.07 | 0.03
+					0.75 | 0.04 | 0.01
+				</div>
+				<p>For higher dimensions it gets more difficult to choose a good scan interval. As the solutions space in
+					general is unknown (and not continuous), this means that for higher dimensions more and more of the scanned
+					area will not be a solution.</p>
+			</section>
+
+
+
+				<section>
+					<h1> <span class="hl1">Turning off</span> the Q5 quadrupole in simulations </h1>
+				</section>
+
+				<section>
+					<h2>Finding a stable configuration as <span class="hl1">starting point</span></h2>
+					<img src="images/01-cavity-in-T2_def.svg" alt="">
+					<img src="images/05-stability-all_def_horizontal.svg" alt="">
+				</section>
+
+				<section>
+					<h2>Version 1</h2>
+					Only using the Quadrupoles of the T2 straight to compensate the turn off of the Q5
+					<img src="images/05-V1-comparison_def.svg" alt="">
+					<div data-markdown>
+						Magnet| Initial | Finial | Absolute | Relative | Relative (exp.)
+						---- | ---- | --- | ----- | --- | ----
+						Q5T2 | -2.588 | 0.000 | 2.588 | 0.000 | 0.080
+						Q4T2 | 2.579 | 2.032 | -0.547 | 0.788 | 0.769
+						Q3T2 | -2.455 | -2.630 | -0.174 | 1.071 | 1.031
+
+						$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m |
+						$\overline{\beta}_{\mathrm{y,rel}}$ / m
+						--- | ---| --- | ---
+						32.34 | 54.57 | 1.08 | 1.43
+					</div>
+				</section>
+
+				<section>
+					<h2>Using quadrupoles of the other straigths to compensate the turnoff</h2>
+					<p style="font-size: 28px">Scan are not feasible for many DOFs => an optimization method is needed</p>
+				</section>
+
+			</section>
+
+			<section>
+				<p> Fitness function: </p>
+				$$F = \frac{1}{L} \int_0^L \mathrm{d}s \frac{\beta_u}{\beta_{u,\mathrm{ref}}}$$
+			</section>
+
+			<section>
+				<h2>Overview of solutions</h2>
+				<img class="stretch" src="images/05-V-versions-comparison_def.svg" alt="">
+			</section>
+
+
+			<section>
+				<h2>Testing V1-V4</h2>
+				<img src="images/05-injection_efficiency_all_version_def.svg" alt="">
+			</section>
+
+
+
+
+
+
+
+			<section data-background="#23373B">
+				<h1>Questions?</h1>
+			</section>
+
+			<section data-background="OrangeRed">
+				<h1>Backups</h1>
+			</section>
+
+			<section>
+				<h2>BESSY VSR - The variable pulse-length storage ring</h2>
+				<div class="flex">
+					<img src="images/01-cavity-voltage.svg" style="width: 70%;">
+					<div data-markdown style="font-size: 20px;">
+						Lattice | Bunch length $\sigma_z / \mathrm{ps}$
+						---------------------|-------
+						BESSY II | 15
+						BESSY II low alpha | 3
+						BESSY VSR short bunch| 1.7
+						BESSY VSR long bunch | 15
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="reveal.js/lib/js/head.min.js"></script>
+	<script src="reveal.js/js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			width: 1920,
+			height: 1080,
+			center: false,
+			margin: 0,
+			// minScale: 1,
+			// maxScale: 1,
+
+			history: true,
+			controls: false,
+			slideNumber: true,
+			// mouseWheel: true,
+			display: 'flex',
+
+			transition: 'fade',
+			backgroundTransition: 'fade',
+			dependencies: [
+				{ src: 'reveal.js/plugin/markdown/marked.js' },
+				{ src: 'reveal.js/plugin/markdown/markdown.js' },
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'reveal.js/plugin/search/search.js', async: true },
+				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+				{ src: 'reveal.js/plugin/math/math.js' }
+			]
+		});
+	</script>
+
+	<!-- <script type="text/javascript">
+		MathJax.Hub.Config({
+			"HTML-CSS": {
+				preferredFont: null,
+				webFont: "Asana-Math",
+			}
+		});    
+	</script> -->
+
+</body>
+
+</html>
