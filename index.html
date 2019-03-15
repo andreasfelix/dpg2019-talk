@@ -12,7 +12,8 @@
 	<link rel="stylesheet" href="custom.css">
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/googlecode.min.css">
 
 	<!-- Printing and PDF exports -->
 	<script>
@@ -150,9 +151,9 @@
 			</section>
 
 			<section>
-				<h1>Limits of the lattice stability <span class="hl2">- FODO cell</span></h1>
-				<p> The root term in the demonitor leads to a <span class="hl1">limited</span> solution space.</p>
-				$$\beta_{periodic} = \frac{2 R_{12}}{\sqrt{2 - R_{11}^2 - 2 R_{12} R_{21} - R_{22}^2}}$$
+				<h1>Limits of the lattice stability FODO cell</h1>
+				<p>Stability condition:</p> 
+				$$2 - R_{11}^2 - 2 R_{12} R_{21} - R_{22}^2 > 0$$
 				<div class="grid-11">
 					<img src="images/05-necktie-plot.svg">
 					<img src="images/05-limits-of-FODOcell.svg">
@@ -265,6 +266,29 @@
 				<p> Fitness function: </p>
 				$$F = \frac{1}{L} \int_0^L \mathrm{d}s \frac{\beta_u}{\beta_{u,\mathrm{ref}}}$$
 			</section>
+
+			<section>
+				<h1>Optimizing with Python + Scipy</h1>
+				<pre class="grow" style="font-size: 1em"><code data-trim data-noescape>
+									def fitness(params):
+										for element, attribute, param in zip(elements, attributes, params):
+											setattr(element, attribute, param)
+									
+										twiss = lin.get_twiss()
+									
+										betaxres = twiss.betax_int / ref_twiss.betax_int
+										betayres = twiss.betay_int / ref_twiss.betay_int
+										betaxres[betaxres < 1] = 1
+										betayres[betayres < 1] = 1
+										betaxres = betaxres ** 4
+										betayres = betayres ** 4
+										beta_mean_res = np.mean([betaxres, betayres])
+									return beta_mean_res
+			
+									scipy.optimize.minimize(fitness, initial_values)
+										</code></pre>
+			</section>
+
 
 			<section>
 				<h2>Overview of solutions</h2>
