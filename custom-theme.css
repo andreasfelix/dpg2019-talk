@@ -11,7 +11,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
  * GLOBAL STYLES
  *********************************************/
 body {
-  font-size: 22pt;
+  font-size: 28pt;
   background: #fff;
   background-color: #fff; }
 
@@ -48,8 +48,6 @@ body {
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-  text-align: left;
-  align-self: center;
   margin: 0 0 20px 0;
   /* color: #222; */
   font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -230,30 +228,6 @@ body {
 .reveal .roll span:after {
   color: #fff;
   background: #1a53a1; }
-
-/*********************************************
- * IMAGES
- *********************************************/
-.reveal section img {
-  margin: 15px 0px;
-  /* background: rgba(255, 255, 255, 0.12); */
-  /* border: 4px solid #222; */
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
-}
-
-.reveal section img.plain {
-  border: 0;
-  box-shadow: none; }
-
-.reveal a img {
-  -webkit-transition: all .15s linear;
-  -moz-transition: all .15s linear;
-  transition: all .15s linear; }
-
-.reveal a:hover img {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: #2a76dd;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
  * NAVIGATION CONTROLS
