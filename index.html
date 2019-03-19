@@ -9,6 +9,7 @@
 
 	<link rel="stylesheet" href="reveal.js/css/reveal.css">
 	<link rel="stylesheet" href="custom-theme.css">
+	<!-- <link rel="stylesheet" href="reveal.js/css/theme/white.css"> -->
 	<link rel="stylesheet" href="custom.css">
 
 	<!-- Theme used for syntax highlighting of code -->
@@ -91,7 +92,7 @@
 				<h1>The Variable pulse-length Storage Ring</h1>
 				<img class="grow" src="images/01-cavity-in-T2_graphic.svg">
 				<p>One idea: Remove inner Quadrupoles to gain installation length</p>
-				<img src="images/layout/BessyVSR_logo.svg" style="position: absolute; top: 1.5vh; right: 1.5vh; width : 20%;">
+				<img src="images/layout/BessyVSR_logo.svg" style="position: absolute; top: 1.5%; right: 1.5%; width : 20%;">
 			</section>
 
 			<section class="center">
@@ -146,9 +147,11 @@
 				<h3>Challenges:</h3>
 				<ol>
 					<li>It is diffcult to find good <span class="hl1">initial paramters</span> for an optimization method:<br>
-						⇒ If the initial configuration is not stable, the optimizer is sort of <span class="hl1">"blind"</span>. </li>
+						⇒ If the initial configuration is not stable, the optimizer is sort of <span class="hl1">"blind"</span>.
+					</li>
 					<br>
-					<li>The discontinuity of the solution space complicates it to find <span class="hl1">global minima</span>: <br>
+					<li>The discontinuity of the solution space complicates it to find <span class="hl1">global minima</span>:
+						<br>
 						⇒ It needs a sophisticated optimization algorithm to "jump" between the stable regions.</li>
 				</ol>
 			</section>
@@ -177,14 +180,14 @@
 
 
 			<section class="title center">
-				<h1><span class="hl1">Task:</span> Turn off the Q5T2 quadrupoles and keep current beta function</h1>
+				<h1>Task: Turn off the Q5T2 quadrupoles and keep current beta function</h1>
 				<img src="images/01-cavity-in-T2_def.svg" alt="">
 				<p style="text-align: center; font-size: 5em;">🠋</p>
 				<img src="images/01-cavity-in-T2_def_after.svg" alt="">
 			</section>
 
 			<section class="title space-evenly">
-				<h1>First step:  Finding a stable configuration</h1>
+				<h1>First step: Finding a stable configuration</h1>
 				<img src="images/01-cavity-in-T2_def.svg" alt="">
 				<img src="images/05-stability-all_def_horizontal.svg" alt="">
 			</section>
@@ -195,7 +198,8 @@
 				<h1> Quadrupole scans and the curse of dimensionality </h1>
 				<div class="flex-col">
 					<img src="images/curse_of_dimensionality.png">
-					<p style="text-align: center;"><i>The number of scan points grows exponentially with the degrees of freedom!</i></p>
+					<p style="text-align: center;"><i>The number of scan points grows exponentially with the degrees of
+							freedom!</i></p>
 				</div>
 				Assuming
 				<ul>
@@ -216,8 +220,9 @@
 
 			<section class="title">
 				<h1>Ratio of <span class="hl1">solution space</span> to <span class="hl2">scanned space</span></h1>
-				<p> The ratio of the <span class="hl1">solution space</span> to the <span class="hl2">scanned space</span> strongly depends on the interval of the scan. </p>
-				<img src="images/highdimensions_color.svg" style="height: 35vh;">
+				<p> The ratio of the <span class="hl1">solution space</span> to the <span class="hl2">scanned space</span>
+					strongly depends on the interval of the scan. </p>
+				<img src="images/highdimensions_color.svg" style="height: 30%;">
 				<p>Tested for a FODO cell</p>
 				<div data-markdown>
 					k-Interval | 2 DOF | 4 DOF
@@ -234,39 +239,22 @@
 
 
 
-			<section class="title">
-				<h2>Version 1</h2>
-				Only using the Quadrupoles of the T2 straight to compensate the turn off of the Q5
-				<img src="images/05-V1-comparison_def.svg" alt="">
-				<div data-markdown>
-					Magnet| Initial | Finial | Absolute | Relative | Relative (exp.)
-					---- | ---- | --- | ----- | --- | ----
-					Q5T2 | -2.588 | 0.000 | 2.588 | 0.000 | 0.080
-					Q4T2 | 2.579 | 2.032 | -0.547 | 0.788 | 0.769
-					Q3T2 | -2.455 | -2.630 | -0.174 | 1.071 | 1.031
-
-					$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m |
-					$\overline{\beta}_{\mathrm{y,rel}}$ / m
-					--- | ---| --- | ---
-					32.34 | 54.57 | 1.08 | 1.43
-				</div>
-			</section>
 
 			<section class="title space-evenly">
 				<h1>Optimization by minimization of a scalar function</h1>
 				<div>
-					<p> Fitness function: </p>
-					$$F = \frac{1}{L} \int_0^L \mathrm{d}s \frac{\beta_u}{\beta_{u,\mathrm{ref}}} \quad \mathrm{with} \quad $$
-				</div>
-				<div class="flex grow center">
-					<div>
-						<h4>Two conditions:</h4>
-						<ol>
-							<li>The initial parameters must be stable.</li>
-							<li>The optmization method has to handle the discontinuites.</li>
-						</ol>
-					</div>
-					<img src="images/04-stability-plot-bessy2_Q3_vs_Q4_Q5_off_betamaxvalue.svg" width="50%">
+					<p> Objective function(al): </p>
+					$$F(\beta) = \frac{1}{L} \int_0^L R\left(\frac{\beta(s)}{\beta_{\mathrm{ref}}(s)}\right)\mathrm{d}s \quad
+					\textrm{with } R(x) = \begin{cases}
+					1, &\textrm{for } x < 1\\ x, &\textrm{else} \end{cases} $$ </div> <div class="flex grow center">
+						<div>
+							<h4>Two conditions:</h4>
+							<ol>
+								<li>The initial parameters must be stable.</li>
+								<li>The optmization method has to handle the discontinuites.</li>
+							</ol>
+						</div>
+						<img src="images/04-stability-plot-bessy2_Q3_vs_Q4_Q5_off_betamaxvalue.svg" width="50%">
 				</div>
 			</section>
 
@@ -295,85 +283,160 @@
 
 			<section class="title">
 				<h1>Overview of solutions</h1>
-				<img src="images/05-V-versions-comparison_def.svg" alt="">
+				<div class="grid g23">
+					<div data-markdown>
+						Version | Used quadrupoles
+						--- | ---
+						V1 | T2
+						V2 | D2, T2, D3
+						V3 | T1, D2, T2, D3, T3
+						V4 | D1, T1, D2, T2, D3, T3, D4
+					</div>
+					<img src="images/05-V-versions-comparison_def_2.svg" alt="">
+				</div>
+			</section>
+
+			<section class="title">
+				<h1>V1: The local solution</h1>
+				<img class="grow" src="images/V1-comparison.svg" height="80%">
+				<p style="text-align: center;">Comparison of the V1 lattice (solid) with the current standard lattice (dashed).</p>
 			</section>
 
 
 			<section class="title">
-				<h2>Testing V1-V4</h2>
-				<img src="images/05-injection_efficiency_all_version_def.svg" alt="">
+				<h1>V4: The best solution found</h1>
+				<img class="grow" src="images/V4-comparison.svg" height="80%">
+				<p style="text-align: center;">Comparison of the V4 lattice (solid) with the current standard lattice (dashed).</p>
+			</section>
+
+			<section class="title space-around">
+				<h1>Testing V1-V4 at the machine</h1>
+				<div class="grid g31">
+					<img src="images/05-injection_efficiency_all_version_def.svg" alt="">
+					<div data-markdown>
+						Version | Injection efficiency
+						---| ---:
+						V1 | 79.5 %
+						V2 | 89.0 %
+						V3 | 93.2 %
+						V4 | 96.5 %
+					</div>
+				</div>
+				<p>Comparison of the mean injection efficiency of the different version for an optimized sextupole setting for the V4
+				optics. The mean injection efficiency is marked with a red dashed line.</p>
 			</section>
 
 
+			<section class="title">
+			<h1>The best solution V4: Simulation vs LOCO measurement</h1>
+			<img class="grow" src="images/05-V4_LOCO_vs_SIM.svg" height="80%">
+			<p style="text-align: center;">Comparison of V4 LOCO (solid) with V4 SIM (dashed).</p>
+			</section>
 
 
+			<section class="title">
+				<h1>The best solution V4 compared to the current standard user optics</h1>
+				<img class="grow" src="images/05-V4_vs_standard_loco.svg" height="80%">
+				<p style="text-align: center;">The loco measured V4 optics (solid) in comparison to the standard optics (dashed).</p>
+			</section>
 
+			<section class="center">
+				<h1> Conclusion and Outlook </h1>
+			</section>
 
+			<section class="title">
+				<h1>Conclusion and Outlook</h1>
+				<ul>
+					<li>Optimization of the non-linear beam dynamics
+					<div class="small">The sextupoles can be used to enhance the phase and momentum acceptance.</div>
+					</li>
+					<li>Better conversion of the quadrupole strengths</li>
+					<div class="small">It would be very convenient to have conversion functions for the individual quadrupole families. These should be tested with LOCO to make sure that the simulated optics is transfered correctly to the machine.</div>
+					<li>Test solutions with hardware modification</li>
+					<div class="small">This thesis only considered solutions with existing hardware. Splitting up the quadrupole and sextupole families in the T2, D2 and D3 sections would increase the degrees of freedom. It has to be verified by simulations if this approach will lead to a better solution.</div>
+					<li>A better optimization method</li>
+					<div class="small">The used Nelder-Mead method is relatively slow and it has a weakness when considering local minima. Due to the increasing hype on machine learning, many new open source software libraries have been developed, which can be used to solve diverse optimization tasks. Their applicability to lattice
+					optimization problems should be tested.</div>
+				</ul>
+			</section>
 
 			<section class="center" data-background="#23373B">
 				<h1>Questions?</h1>
 			</section>
 
-			<section class="center" data-background="OrangeRed">
+			<section class="center">
 				<h1>Backups</h1>
 			</section>
 
-			<section>
-				<h2>BESSY VSR - The variable pulse-length storage ring</h2>
-				<div class="flex">
-					<img src="images/01-cavity-voltage.svg" style="width: 100%;">
-					<div data-markdown style="font-size: 20px;">
-						Lattice | Bunch length $\sigma_z / \mathrm{ps}$
-						---------------------|-------
-						BESSY II | 15
-						BESSY II low alpha | 3
-						BESSY VSR short bunch| 1.7
-						BESSY VSR long bunch | 15
+			<section class="title center">
+				<h1>BESSY VSR - The variable pulse-length storage ring</h1>
+				<div class="grid g31">
+					<img src="images/01-cavity-voltage.svg" width="100%">
+					<div data-markdown>
+						Lattice | Bunch length
+						---------------------|-------:
+						BESSY II | 15 ps
+						BESSY II low alpha | 3 ps
+						BESSY VSR short bunch| 1.7 ps
+						BESSY VSR long bunch | 15 ps
 					</div>
 				</div>
 			</section>
 
-			</>
+
+			<section class="title space-between">
+				<h1>Version 1</h1>
+				Only using the Quadrupoles of the T2 straight to compensate the turn off of the Q5
+				<img src="images/05-V1-comparison_def.svg" alt="">
+				<div data-markdown>
+					Magnet| Initial | Finial | Absolute | Relative | Relative (exp.)
+					---- | ---- | --- | ----- | --- | ----
+					Q5T2 | -2.588 | 0.000 | 2.588 | 0.000 | 0.080
+					Q4T2 | 2.579 | 2.032 | -0.547 | 0.788 | 0.769
+					Q3T2 | -2.455 | -2.630 | -0.174 | 1.071 | 1.031
+
+					$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m | $\overline{\beta}_{\mathrm{y,rel}}$ / m
+					--- | ---| --- | ---
+					32.34 | 54.57 | 1.08 | 1.43
+				</div>
+			</section>
+
 		</div>
+	</div>
 
-		<script src="reveal.js/lib/js/head.min.js"></script>
-		<script src="reveal.js/js/reveal.js"></script>
+	<script src="reveal.js/lib/js/head.min.js"></script>
+	<script src="reveal.js/js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				width: 1920,
-				height: 1080,
-				// height: 1400,
-				center: false,
-				margin: 0,
-				// minScale: 1,
-				// maxScale: 1,
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			width: 1920,
+			height: 1080,
+			// height: 1400,
+			center: false,
+			margin: 0,
 
-				history: true,
-				controls: false,
-				slideNumber: true,
-				// mouseWheel: true,
-				display: 'flex',
+			history: true,
+			controls: false,
+			slideNumber: true,
+			display: 'flex',
 
-				// transition: 'fade',
-				transition: 'none',
-				backgroundTransition: 'fade',
-				dependencies: [
-					{ src: 'reveal.js/plugin/markdown/marked.js' },
-					{ src: 'reveal.js/plugin/markdown/markdown.js' },
-					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
-					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-					{ src: 'reveal.js/plugin/search/search.js', async: true },
-					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'reveal.js/plugin/math/math.js' }
-				]
-			});
-		</script>
+			// transition: 'fade',
+			transition: 'none',
+			backgroundTransition: 'fade',
+			dependencies: [
+				{ src: 'reveal.js/plugin/markdown/marked.js' },
+				{ src: 'reveal.js/plugin/markdown/markdown.js' },
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'reveal.js/plugin/math/math.js' }
+			]
+		});
+	</script>
 
-		<!-- <script type="text/javascript">
+	<!-- <script type="text/javascript">
 		MathJax.Hub.Config({
 			"HTML-CSS": {
 				preferredFont: null,
