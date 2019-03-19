@@ -5,6 +5,13 @@ body {
 	color: #23373B !important;
 }
 
+.reveal .slide-number {
+	font-size: 24pt !important;
+	scale: 1 !important;
+	background: none;
+	color: #23373B;
+}
+
 /* Section style */
 .reveal .slides > section, .reveal .slides > section > section, .reveal section {
 	height: 100%;
@@ -21,7 +28,7 @@ body {
 }
 
 .reveal .slides section.title, .reveal section.title {
-	padding-top: 6% !important;
+	padding-top: 7% !important;
 }
 
 
@@ -97,9 +104,11 @@ img {
 	margin: 0;
 }
 
-.felix {
-	background: green;
-	font-size: 0.75em; 
+.small {
+	font-size: 0.6em !important; 
+	margin-bottom: 1.5em !important;
+	margin-top: 0.5em !important;
+	text-align: justify;
 }
 
 .hl1 {

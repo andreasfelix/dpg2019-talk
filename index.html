@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>Developing beam optics for the future of BESSY II</title>
+	<title>Optimization of the BESSY II optics for the VSR project</title>
 
 	<link rel="stylesheet" href="reveal.js/css/reveal.css">
 	<link rel="stylesheet" href="custom-theme.css">
@@ -28,6 +28,7 @@
 
 <body>
 	<div class="reveal">
+
 		<div class="slides">
 
 			<section class="titlepage">
@@ -38,9 +39,13 @@
 					</div>
 					<div style="text-align: center;">
 						<h1>Optimization of the BESSY II optics for the VSR project</h1>
-						<h3 style="text-align: center;">Increasing the available installation length for the VSR cavity</h3>
+						<h3 style="text-align: center;">Increasing the available installation length for the VSR cavity in T2 section of the storage ring</h3>
 					</div>
 					<p style="font-size: 24pt;">by Felix Andreas</p>
+				</div>
+				<div style='position: absolute; left: 1em; bottom: 1em; font-size: 0.6em;'>
+					20.03.2019 | DPG Spring Meeting | Felix Andreas | Helmholtz-Zentrum Berlin | Optimization of the BESSY II optics for
+					the VSR project
 				</div>
 			</section>
 
@@ -219,7 +224,7 @@
 			</section>
 
 			<section class="title">
-				<h1>Ratio of <span class="hl1">solution space</span> to <span class="hl2">scanned space</span></h1>
+				<h1>Ratio of solution space to scanned space</h1>
 				<p> The ratio of the <span class="hl1">solution space</span> to the <span class="hl2">scanned space</span>
 					strongly depends on the interval of the scan. </p>
 				<img src="images/highdimensions_color.svg" style="height: 30%;">
@@ -244,7 +249,7 @@
 				<h1>Optimization by minimization of a scalar function</h1>
 				<div>
 					<p> Objective function(al): </p>
-					$$ F(\beta) = \frac{1}{L} \int_0^L R\left(\frac{\beta(s)}{\beta_{\mathrm{ref}}(s)}\right)\mathrm{d}s \quad \textrm{with } R(x) = \begin{cases} 1, &\textrm{for } x < 1\\ x, &\textrm{else} \end{cases} $$
+					$$ F(\beta) = \frac{1}{L} \int_0^L R\left(\frac{\beta(s)}{\beta_{\mathrm{ref}}(s)}\right)^2 \mathrm{d}s \quad \textrm{with } R(x) = \begin{cases} 1, &\textrm{for } x < 1\\ x, &\textrm{else} \end{cases} $$
 				</div>
 				<div class="flex grow center">
 						<div>
@@ -258,9 +263,14 @@
 				</div>
 			</section>
 
-			<section class="title">
+			<section class="title space-between">
 				<h1>Optimizing with Python + Scipy</h1>
-				<pre class="grow" style="font-size: 1em"><code data-trim data-noescape>
+				<div>
+					<p> Objective function(al): </p>
+					$$ F(\beta) = \frac{1}{L} \int_0^L R\left(\frac{\beta(s)}{\beta_{\mathrm{ref}}(s)}\right)^2 \mathrm{d}s \quad
+					\textrm{with } R(x) = \begin{cases} 1, &\textrm{for } x < 1\\ x, &\textrm{else} \end{cases} $$ 
+				</div>
+				<pre lass="grow" style="font-size: 0.87em;"><code data-trim data-noescape>
 									def fitness(params):
 										for element, attribute, param in zip(elements, attributes, params):
 											setattr(element, attribute, param)
@@ -271,8 +281,8 @@
 										betayres = twiss.betay_int / ref_twiss.betay_int
 										betaxres[betaxres < 1] = 1
 										betayres[betayres < 1] = 1
-										betaxres = betaxres ** 4
-										betayres = betayres ** 4
+										betaxres = betaxres ** 2
+										betayres = betayres ** 2
 										beta_mean_res = np.mean([betaxres, betayres])
 									return beta_mean_res
 			
@@ -348,9 +358,9 @@
 				<h1> Conclusion and Outlook </h1>
 			</section>
 
-			<section class="title">
+			<section class="title center">
 				<h1>Conclusion and Outlook</h1>
-				<ul>
+				<ul style="font-size: 1.2em;">
 					<li>Optimization of the non-linear beam dynamics
 						<div class="small">The sextupoles can be used to enhance the phase and momentum acceptance.</div>
 					</li>
@@ -405,8 +415,7 @@
 					Q4T2 | 2.579 | 2.032 | -0.547 | 0.788 | 0.769
 					Q3T2 | -2.455 | -2.630 | -0.174 | 1.071 | 1.031
 
-					$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m |
-					$\overline{\beta}_{\mathrm{y,rel}}$ / m
+					$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m | $\overline{\beta}_{\mathrm{y,rel}}$ / m
 					--- | ---| --- | ---
 					32.34 | 54.57 | 1.08 | 1.43
 				</div>
