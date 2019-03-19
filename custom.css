@@ -8,11 +8,24 @@ body {
 /* Section style */
 .reveal .slides section, .reveal .slides section > section {
 	height: 100%;
-	padding: 3%;
-	box-sizing: border-box;
+	/* width: 100%; */
+	/* padding: 3%; */
+	/* box-sizing: border-box; */
 	flex-direction: column;
-	/* border: 1px solid red; */
+	border: 1px solid red;
 }
+
+.reveal.slide .slides > section, .reveal.slide .slides > section > section {
+  min-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 0 !important;
+  align-items: center !important;
+}
+
+
 
 /* Section styles */
 .center {	justify-content: center; align-items: center; }
@@ -21,10 +34,15 @@ body {
 	padding-top: 6%;
 }
 
-.title > h1 {
+section.title > h1 {
 	position: absolute;
 	top: 1.5%;
 	left: 1.5%;
+}
+
+.print-pdf .reveal.slide .slides > section, .print-pdf .reveal.slide .slides > section > section {
+  min-height: 770px !important;
+  position: relative !important;
 }
 
 .space-around {	justify-content: space-around; }
@@ -35,7 +53,7 @@ body {
 .stretch { align-self: stretch; justify-self: stretch; object-fit: contain; }
 
 /* Custom classes */
-div {
+.slides section div {
 	max-width: 100%;
 	max-height: 100%;
 }
