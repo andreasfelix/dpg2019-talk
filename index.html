@@ -69,7 +69,7 @@
 			</section>
 
 			<section class="title">
-				<h1>BESSY II - A third generation light source</h1>
+				<h1>The Variable pulse-length Storage Ring</h1>
 				<div class="grow grid g32">
 					<img src="images/01-BESSY-II-floor-plan_zoom.svg" height="90%">
 					<div class="flex-col space-evenly">
@@ -84,7 +84,7 @@
 						<div data-markdown>
 							Lattice | Bunch length
 							---------------------|-------:
-							BESSY II | 15 ps
+							BESSY II standard user optics | 15 ps
 							BESSY II low alpha | 3 ps
 							BESSY VSR short bunch| 1.7 ps
 							BESSY VSR long bunch | 15 ps
@@ -94,7 +94,7 @@
 			</section>
 
 			<section class="title">
-				<h1>The Variable pulse-length Storage Ring</h1>
+				<h1>The VSR-cryomodule in the T2 straight</h1>
 				<img class="grow" src="images/01-cavity-in-T2_graphic.svg">
 				<p>One idea: Remove inner Quadrupoles to gain installation length</p>
 				<img src="images/layout/BessyVSR_logo.svg" style="position: absolute; top: 1.5%; right: 1.5%; width : 20%;">
@@ -104,7 +104,7 @@
 				<h1>Transverse linear beam dynamics in circular accelerators</h1>
 			</section>
 
-			<section class="title space-between">
+			<section class="title space-around">
 				<h1>Transverse linear beam dynamics in circular accelerators</h1>
 				<p>
 					The equations of motion for a charged particle in a magnetic field in linear order:
@@ -130,13 +130,13 @@
 					<p> Periodicity conditions of circular accelerators: </p>
 					$$\beta(s) = \beta(s + C) \quad \forall \quad s$$
 
-					<p> Intial value of the beta function: </p>
+					<p> Initial value of the beta function: </p>
 					$$\beta(s) = \frac{2 R_{12}}{\underbrace{\sqrt{2 - R_{11}^2 - 2 R_{12} R_{21} -
 					R_{22}^2}}_{\overset{!}{>}0}}$$
 				</div>
 			</section>
 
-			<section class="title space-between">
+			<section class="title space-around">
 				<h1>Limits of the lattice stability - FODO cell</h1>
 				<p>Stability condition:</p>
 				$$2 - R_{11}^2 - 2 R_{12} R_{21} - R_{22}^2 > 0$$
@@ -146,16 +146,16 @@
 				</div>
 			</section>
 
-			<section class="title space-between">
+			<section class="title space-around">
 				<h1>Scan for two quadrupoles of the BESSY II storage ring </h1>
 				<img src="images/04-stability-plot-bessy2_Q3_vs_Q4_Q5_off_betamaxvalue.svg" height="65%">
 				<h3>Challenges:</h3>
 				<ol>
-					<li>It is diffcult to find good <span class="hl1">initial paramters</span> for an optimization method:<br>
+					<li>It is difficult to find good <span class="hl1">initial parameters</span> for an optimization method:<br>
 						⇒ If the initial configuration is not stable, the optimizer is sort of <span class="hl1">"blind"</span>.
 					</li>
 					<br>
-					<li>The discontinuity of the solution space complicates it to find <span class="hl1">global minima</span>:
+					<li>The discontinuities of the solution space complicates it to find <span class="hl1">global minima</span>:
 						<br>
 						⇒ It needs a sophisticated optimization algorithm to "jump" between the stable regions.</li>
 				</ol>
@@ -199,7 +199,7 @@
 
 
 
-			<section class="title">
+			<section class="title space-around">
 				<h1> Quadrupole scans and the curse of dimensionality </h1>
 				<div class="flex-col">
 					<img src="images/curse_of_dimensionality.png">
@@ -223,7 +223,7 @@
 				</div>
 			</section>
 
-			<section class="title">
+			<section class="title space-around">
 				<h1>Ratio of solution space to scanned space</h1>
 				<p> The ratio of the <span class="hl1">solution space</span> to the <span class="hl2">scanned space</span>
 					strongly depends on the interval of the scan. </p>
@@ -263,7 +263,7 @@
 				</div>
 			</section>
 
-			<section class="title space-between">
+			<section class="title space-around">
 				<h1>Optimizing with Python + Scipy</h1>
 				<div>
 					<p> Objective function(al): </p>
@@ -291,7 +291,7 @@
 			</section>
 
 
-			<section class="title">
+			<section class="title center">
 				<h1>Overview of solutions</h1>
 				<div class="grid g23">
 					<div data-markdown>
@@ -306,7 +306,7 @@
 				</div>
 			</section>
 
-			<section class="title">
+			<section class="title center">
 				<h1>V1: The local solution</h1>
 				<img class="grow" src="images/V1-comparison.svg" height="80%">
 				<p style="text-align: center;">Comparison of the V1 lattice (solid) with the current standard lattice (dashed).
@@ -314,7 +314,7 @@
 			</section>
 
 
-			<section class="title">
+			<section class="title center">
 				<h1>V4: The best solution found</h1>
 				<img class="grow" src="images/V4-comparison.svg" height="80%">
 				<p style="text-align: center;">Comparison of the V4 lattice (solid) with the current standard lattice (dashed).
@@ -340,14 +340,14 @@
 			</section>
 
 
-			<section class="title">
+			<section class="title center">
 				<h1>The best solution V4: Simulation vs LOCO measurement</h1>
 				<img class="grow" src="images/05-V4_LOCO_vs_SIM.svg" height="80%">
 				<p style="text-align: center;">Comparison of V4 LOCO (solid) with V4 SIM (dashed).</p>
 			</section>
 
 
-			<section class="title">
+			<section class="title center">
 				<h1>The best solution V4 compared to the current standard user optics</h1>
 				<img class="grow" src="images/05-V4_vs_standard_loco.svg" height="80%">
 				<p style="text-align: center;">The loco measured V4 optics (solid) in comparison to the standard optics
@@ -361,6 +361,7 @@
 			<section class="title center">
 				<h1>Conclusion and Outlook</h1>
 				<ul style="font-size: 1.2em;">
+					<li>Beta function currently to high within the T2 section where VSR module will be installed</li>
 					<li>Optimization of the non-linear beam dynamics
 						<div class="small">The sextupoles can be used to enhance the phase and momentum acceptance.</div>
 					</li>
@@ -404,7 +405,7 @@
 			</section>
 
 
-			<section class="title space-between">
+			<section class="title space-around">
 				<h1>Version 1</h1>
 				Only using the Quadrupoles of the T2 straight to compensate the turn off of the Q5
 				<img src="images/05-V1-comparison_def.svg" alt="">
@@ -434,8 +435,8 @@
 		Reveal.initialize({
 			pdfMaxPagesPerSlide: 1,
 			width: 1920,
-			height: 1080,
-			// height: 1400,
+			// height: 1080,
+			height: 1400,
 			center: false,
 			margin: 0,
 
