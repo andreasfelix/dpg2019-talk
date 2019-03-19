@@ -21,7 +21,7 @@
 		var link = document.createElement('link');
 		link.rel = 'stylesheet';
 		link.type = 'text/css';
-		link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'pdf-custom.css' : 'reveal.js/css/print/paper.css';
 		document.getElementsByTagName('head')[0].appendChild(link);
 	</script>
 </head>
@@ -179,7 +179,7 @@
 
 
 
-			<section class="title center">
+			<section class="title space-evenly">
 				<h1>Task: Turn off the Q5T2 quadrupoles and keep current beta function</h1>
 				<img src="images/01-cavity-in-T2_def.svg" alt="">
 				<p style="text-align: center; font-size: 5em;">🠋</p>
@@ -244,9 +244,9 @@
 				<h1>Optimization by minimization of a scalar function</h1>
 				<div>
 					<p> Objective function(al): </p>
-					$$F(\beta) = \frac{1}{L} \int_0^L R\left(\frac{\beta(s)}{\beta_{\mathrm{ref}}(s)}\right)\mathrm{d}s \quad
-					\textrm{with } R(x) = \begin{cases}
-					1, &\textrm{for } x < 1\\ x, &\textrm{else} \end{cases} $$ </div> <div class="flex grow center">
+					$$ F(\beta) = \frac{1}{L} \int_0^L R\left(\frac{\beta(s)}{\beta_{\mathrm{ref}}(s)}\right)\mathrm{d}s \quad \textrm{with } R(x) = \begin{cases} 1, &\textrm{for } x < 1\\ x, &\textrm{else} \end{cases} $$
+				</div>
+				<div class="flex grow center">
 						<div>
 							<h4>Two conditions:</h4>
 							<ol>
@@ -299,14 +299,16 @@
 			<section class="title">
 				<h1>V1: The local solution</h1>
 				<img class="grow" src="images/V1-comparison.svg" height="80%">
-				<p style="text-align: center;">Comparison of the V1 lattice (solid) with the current standard lattice (dashed).</p>
+				<p style="text-align: center;">Comparison of the V1 lattice (solid) with the current standard lattice (dashed).
+				</p>
 			</section>
 
 
 			<section class="title">
 				<h1>V4: The best solution found</h1>
 				<img class="grow" src="images/V4-comparison.svg" height="80%">
-				<p style="text-align: center;">Comparison of the V4 lattice (solid) with the current standard lattice (dashed).</p>
+				<p style="text-align: center;">Comparison of the V4 lattice (solid) with the current standard lattice (dashed).
+				</p>
 			</section>
 
 			<section class="title space-around">
@@ -322,22 +324,24 @@
 						V4 | 96.5 %
 					</div>
 				</div>
-				<p>Comparison of the mean injection efficiency of the different version for an optimized sextupole setting for the V4
-				optics. The mean injection efficiency is marked with a red dashed line.</p>
+				<p>Comparison of the mean injection efficiency of the different version for an optimized sextupole setting for
+					the V4
+					optics. The mean injection efficiency is marked with a red dashed line.</p>
 			</section>
 
 
 			<section class="title">
-			<h1>The best solution V4: Simulation vs LOCO measurement</h1>
-			<img class="grow" src="images/05-V4_LOCO_vs_SIM.svg" height="80%">
-			<p style="text-align: center;">Comparison of V4 LOCO (solid) with V4 SIM (dashed).</p>
+				<h1>The best solution V4: Simulation vs LOCO measurement</h1>
+				<img class="grow" src="images/05-V4_LOCO_vs_SIM.svg" height="80%">
+				<p style="text-align: center;">Comparison of V4 LOCO (solid) with V4 SIM (dashed).</p>
 			</section>
 
 
 			<section class="title">
 				<h1>The best solution V4 compared to the current standard user optics</h1>
 				<img class="grow" src="images/05-V4_vs_standard_loco.svg" height="80%">
-				<p style="text-align: center;">The loco measured V4 optics (solid) in comparison to the standard optics (dashed).</p>
+				<p style="text-align: center;">The loco measured V4 optics (solid) in comparison to the standard optics
+					(dashed).</p>
 			</section>
 
 			<section class="center">
@@ -348,15 +352,21 @@
 				<h1>Conclusion and Outlook</h1>
 				<ul>
 					<li>Optimization of the non-linear beam dynamics
-					<div class="small">The sextupoles can be used to enhance the phase and momentum acceptance.</div>
+						<div class="small">The sextupoles can be used to enhance the phase and momentum acceptance.</div>
 					</li>
 					<li>Better conversion of the quadrupole strengths</li>
-					<div class="small">It would be very convenient to have conversion functions for the individual quadrupole families. These should be tested with LOCO to make sure that the simulated optics is transfered correctly to the machine.</div>
+					<div class="small">It would be very convenient to have conversion functions for the individual quadrupole
+						families. These should be tested with LOCO to make sure that the simulated optics is transfered correctly to
+						the machine.</div>
 					<li>Test solutions with hardware modification</li>
-					<div class="small">This thesis only considered solutions with existing hardware. Splitting up the quadrupole and sextupole families in the T2, D2 and D3 sections would increase the degrees of freedom. It has to be verified by simulations if this approach will lead to a better solution.</div>
+					<div class="small">This thesis only considered solutions with existing hardware. Splitting up the quadrupole
+						and sextupole families in the T2, D2 and D3 sections would increase the degrees of freedom. It has to be
+						verified by simulations if this approach will lead to a better solution.</div>
 					<li>A better optimization method</li>
-					<div class="small">The used Nelder-Mead method is relatively slow and it has a weakness when considering local minima. Due to the increasing hype on machine learning, many new open source software libraries have been developed, which can be used to solve diverse optimization tasks. Their applicability to lattice
-					optimization problems should be tested.</div>
+					<div class="small">The used Nelder-Mead method is relatively slow and it has a weakness when considering local
+						minima. Due to the increasing hype on machine learning, many new open source software libraries have been
+						developed, which can be used to solve diverse optimization tasks. Their applicability to lattice
+						optimization problems should be tested.</div>
 				</ul>
 			</section>
 
@@ -395,7 +405,8 @@
 					Q4T2 | 2.579 | 2.032 | -0.547 | 0.788 | 0.769
 					Q3T2 | -2.455 | -2.630 | -0.174 | 1.071 | 1.031
 
-					$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m | $\overline{\beta}_{\mathrm{y,rel}}$ / m
+					$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m |
+					$\overline{\beta}_{\mathrm{y,rel}}$ / m
 					--- | ---| --- | ---
 					32.34 | 54.57 | 1.08 | 1.43
 				</div>
@@ -412,6 +423,7 @@
 		// - https://github.com/hakimel/reveal.js#configuration
 		// - https://github.com/hakimel/reveal.js#dependencies
 		Reveal.initialize({
+			pdfMaxPagesPerSlide: 1,
 			width: 1920,
 			height: 1080,
 			// height: 1400,
