@@ -72,7 +72,7 @@
 				<h1>The Variable pulse-length Storage Ring</h1>
 				<div class="grow grid g32">
 					<img src="images/01-BESSY-II-floor-plan_zoom.svg" height="90%">
-					<div class="flex-col space-evenly">
+					<div class="flex-col space-evenly" style="height: 100%;">
 						<div data-markdown>
 							Parameter | Value
 							------------------ | -----------:
@@ -111,8 +111,7 @@
 				</p>
 				<div class="math">
 					\begin{align}
-					u''(s) + K(s) u(s) = 0 &&&\quad \overset{\text{Floquet's theorem}}{\Rightarrow} \quad &&u(s) = \sqrt{\epsilon}
-					\sqrt{\beta(s)} \cos(\psi(s)+\psi_0)
+					u''(s) + K(s) u(s) = 0 &&&\quad \overset{\text{Floquet's theorem}}{\Rightarrow} \quad &&u(s) = \underbrace{\sqrt{\epsilon} \sqrt{\beta(s)}}_\textrm{periodic} \cos(\psi(s)+\psi_0)
 					\end{align}
 				</div>
 				<img src="images/03-envelope.svg" width="100%">
@@ -159,6 +158,10 @@
 						<br>
 						⇒ It needs a sophisticated optimization algorithm to "jump" between the stable regions.</li>
 				</ol>
+			</section>
+
+			<section class="center">
+				<h1>The BESSY II storage ring lattice</h1>
 			</section>
 
 
@@ -289,6 +292,9 @@ scipy.optimize.minimize(fitness, initial_values)
 										</code></pre>
 			</section>
 
+			<section class="center">
+				<h1>Simulations of the new optics and verification at the machine</h1>
+			</section>
 
 			<section class="title center">
 				<h1>Overview of solutions</h1>
@@ -403,22 +409,13 @@ scipy.optimize.minimize(fitness, initial_values)
 				</div>
 			</section>
 
-
-			<section class="title space-around">
-				<h1>Version 1</h1>
-				Only using the Quadrupoles of the T2 straight to compensate the turn off of the Q5
-				<img src="images/05-V1-comparison_def.svg" alt="">
-				<div data-markdown>
-					Magnet| Initial | Finial | Absolute | Relative | Relative (exp.)
-					---- | ---- | --- | ----- | --- | ----
-					Q5T2 | -2.588 | 0.000 | 2.588 | 0.000 | 0.080
-					Q4T2 | 2.579 | 2.032 | -0.547 | 0.788 | 0.769
-					Q3T2 | -2.455 | -2.630 | -0.174 | 1.071 | 1.031
-
-					$\beta_{\mathrm{x,max}}$ / m | $\beta_{\mathrm{y,max}}$ / m | $\overline{\beta}_{\mathrm{x,rel}}$ / m | $\overline{\beta}_{\mathrm{y,rel}}$ / m
-					--- | ---| --- | ---
-					32.34 | 54.57 | 1.08 | 1.43
-				</div>
+			<section class="title center">
+				<h1>LOCO (Linear Optics from Closed Orbits) </h1>
+				<ol>
+					<li>Measure the LOCO data (BPM response matrix, dispersion function, BPM noise)</li>
+					<li>Build the LOCO input file (choose a accelerator model).</li>
+					<li>Fit the LOCO data to the model.</li>
+				</ol>
 			</section>
 
 		</div>
